@@ -57,6 +57,9 @@ source ~/dotfiles/zsh/env
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# Enable rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -78,3 +81,4 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias gdc="gd --cached"

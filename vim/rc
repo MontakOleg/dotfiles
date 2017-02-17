@@ -5,6 +5,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 call plug#end()
 
-" always show airline
+" Always show airline
 set laststatus=2
 
+" Smart case insensetive search
+:set ignorecase
+:set smartcase

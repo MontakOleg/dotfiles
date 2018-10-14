@@ -7,6 +7,7 @@ filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " Always show airline
@@ -16,3 +17,14 @@ set laststatus=2
 :set ignorecase
 :set smartcase
 
+" No wrap
+:set nowrap
+
+" Use ag if available
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif

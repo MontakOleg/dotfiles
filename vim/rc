@@ -6,12 +6,11 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
-" Always show airline
-set laststatus=2
+" Show percentage of file
+:set ruler
 
 " Smart case insensetive search
 :set ignorecase

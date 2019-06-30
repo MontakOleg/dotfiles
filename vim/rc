@@ -7,6 +7,8 @@ filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'keith/swift.vim'
 call plug#end()
 
 " Show percentage of file
@@ -26,4 +28,7 @@ if executable('ag')
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " Use ag in :Ack
+  let g:ackprg = 'ag --vimgrep'
 endif

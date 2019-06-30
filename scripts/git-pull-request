@@ -38,7 +38,7 @@ EOF
 
 # default base branch
 
-default_base_branch="develop"
+default_base_branch="master"
 
 # auth token
 

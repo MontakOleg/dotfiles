@@ -6,9 +6,21 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
+
+" file search
 Plug 'mileszs/ack.vim'
+
+" fuzzy finder
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
+" org-mode support
+Plug 'jceb/vim-orgmode'
+Plug 'vim-scripts/utl.vim'
+
+" swift support
 Plug 'keith/swift.vim'
+
 call plug#end()
 
 " Show percentage of file
@@ -21,6 +33,9 @@ call plug#end()
 " No wrap
 :set nowrap
 
+" Tabs
+setlocal shiftwidth=4 softtabstop=4 expandtab
+
 " Use ag if available
 if executable('ag')
   " Use Ag over Grep
@@ -32,3 +47,21 @@ if executable('ag')
   " Use ag in :Ack
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" Remap leader key from \ to ,
+let mapleader = ","
+
+" Turn on line numbers by typing ,num
+nnoremap <leader>n :set number<cr>
+
+" Clear a search by typing ,<space>
+nnoremap <leader><space> :noh<cr>
+
+" FZF bindings
+nmap ; :Buffers<CR>
+nmap <Leader>o :Files<CR>
+nmap <Leader>go :GFiles<CR>
+
+" swift format
+nnoremap <leader>F :!swiftformat % --swiftversion 5<cr>
+

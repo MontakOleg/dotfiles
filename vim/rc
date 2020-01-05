@@ -7,6 +7,9 @@ filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
 
+" file manager
+Plug 'scrooloose/nerdtree'
+
 " file search
 Plug 'mileszs/ack.vim'
 
@@ -14,12 +17,19 @@ Plug 'mileszs/ack.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
-" org-mode support
-Plug 'jceb/vim-orgmode'
-Plug 'vim-scripts/utl.vim'
-
 " swift support
 Plug 'keith/swift.vim'
+
+Plug 'luochen1990/rainbow'
+
+" clojure repl
+Plug 'tpope/vim-fireplace'
+
+" clojure highlight and indent
+Plug 'guns/vim-clojure-static'
+
+" graphql highlight
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
@@ -32,6 +42,9 @@ call plug#end()
 
 " No wrap
 :set nowrap
+
+" Enable mouse
+:set mouse=a
 
 " Tabs
 setlocal shiftwidth=4 softtabstop=4 expandtab
@@ -58,10 +71,15 @@ nnoremap <leader>n :set number<cr>
 nnoremap <leader><space> :noh<cr>
 
 " FZF bindings
-nmap ; :Buffers<CR>
 nmap <Leader>o :Files<CR>
 nmap <Leader>go :GFiles<CR>
+nmap <Leader>b :Buffers<CR>
 
 " swift format
 nnoremap <leader>F :!swiftformat % --swiftversion 5<cr>
 
+" enable rainbow
+let g:rainbow_active = 1
+
+" open/close NerdTree
+map <C-n> :NERDTreeToggle<CR>

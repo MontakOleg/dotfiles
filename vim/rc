@@ -22,12 +22,6 @@ Plug 'keith/swift.vim'
 
 Plug 'luochen1990/rainbow'
 
-" clojure repl
-Plug 'tpope/vim-fireplace'
-
-" clojure highlight and indent
-Plug 'guns/vim-clojure-static'
-
 " graphql highlight
 Plug 'jparise/vim-graphql'
 

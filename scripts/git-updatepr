@@ -21,7 +21,7 @@ if ! git cherry-pick core-dev; then
 fi
 
 # Push the updated branch.
-git push
+git push origin "$branch_name"
 
 # Go back to core-dev.
 git switch core-dev

@@ -1,3 +1,2 @@
 bind main P ?<git newpr %(commit)
 bind main U ?<git updatepr %(commit)
-bind main O ?<git amendpr %(commit)

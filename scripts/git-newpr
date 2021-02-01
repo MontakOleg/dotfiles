@@ -1,27 +1,60 @@
 #!/bin/bash
 
 set -euo pipefail
+set -x
 
-readonly pr_commit="${1:-core-dev}"
-
-# Autogenerate a branch name based on the commit subject.
-readonly branch_name="$(git show --no-patch --format="%f" "$pr_commit")"
-
-# Create the new branch and switch to it.
-git branch --no-track "$branch_name" origin/core-dev
-git switch "$branch_name"
-
-# Cherry pick the desired commit.
-if ! git cherry-pick "$pr_commit"; then
-    git cherry-pick --abort
-    git switch core-dev
-    exit 1
+readonly commit_arg="${1:-HEAD}"
+if [[ $# -gt 0 ]]; then
+  shift
 fi
 
-# Create a new remote branch by the same name.
-git -c push.default=current push
+readonly commit="$(git rev-parse "$commit_arg")"
+readonly branch_name="$(git show --no-patch --format=%f "$commit" | tr '[:upper:]' '[:lower:]')"
 
-open "https://gitlab.com/fastr/mono/merge_requests/new?merge_request[source_branch]=$branch_name"
+if git show-ref --verify --quiet refs/heads/"$branch_name"; then
+  echo "error: branch named '$branch_name' already exists" >&2
+  exit 1
+fi
 
-# Go back to core-dev branch.
-git switch core-dev
+git branch --no-track "$branch_name" "@{upstream}"
+
+git worktree prune
+readonly worktree_name=$(git rev-parse --show-toplevel | md5)
+readonly worktree_dir="/tmp/$worktree_name"
+# If the OS cleaned the directory in the /tmp dir, it maybe exist but be empty
+rmdir "$worktree_dir" 2>/dev/null || true
+if [[ ! -d "$worktree_dir" ]]; then
+  git worktree add "$worktree_dir" "$branch_name"
+else
+  if ! git -C "$worktree_dir" switch "$branch_name"; then
+    # TODO: should this be -D?
+    git branch -d "$branch_name"
+    exit 1
+  fi
+fi
+
+_checkout_empty() {
+  git -C "$worktree_dir" switch -C "empty-$worktree_name" --quiet
+}
+
+if ! git -C "$worktree_dir" cherry-pick "$commit"; then
+  if git -C "$worktree_dir" mergetool; then
+    git -C "$worktree_dir" -c core.editor=true cherry-pick --continue
+  else
+    # TODO: should this be -D?
+    git -C "$worktree_dir" cherry-pick --abort
+    _checkout_empty
+    git branch -d "$branch_name"
+    exit 1
+  fi
+fi
+
+if git -C "$worktree_dir" push --quiet --set-upstream origin "$branch_name"; then
+  open "https://gitlab.com/fastr/mono/merge_requests/new?merge_request[source_branch]=$branch_name"
+else
+  echo "error: failed to create remote branch" >&2
+  _checkout_empty
+  git branch -d "$branch_name"
+fi
+
+_checkout_empty

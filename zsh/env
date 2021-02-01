@@ -4,6 +4,7 @@ export PATH="$PATH:$HOME/.fastlane/bin"
 export PATH="$HOME/dotfiles/scripts:$PATH"
 export PATH="$HOME/.pyenv/shims:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
 
 export PKG_CONFIG_PATH="$(brew --prefix python3)/Frameworks/Python.framework/Versions/3.4/lib/pkgconfig:$PKG_CONFIG_PATH"

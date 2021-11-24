@@ -82,5 +82,16 @@ export LANG=en_US.UTF-8
 alias gl="git pull --rebase"
 alias vim=nvim
 
+# remove files which listed in .gitignore, https://gist.github.com/joshdholtz/4497670
+alias ungit="git ls-files -ci --exclude-standard -z | xargs -0 git rm --cached"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# setup asdf
+. $HOME/.asdf/asdf.sh
+
+# asdf completions
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit
+compinit

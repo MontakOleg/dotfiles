@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #
 # Modified script from https://github.com/tj/git-extras/blob/master/bin/git-pull-request

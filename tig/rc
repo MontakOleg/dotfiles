@@ -1,2 +1,3 @@
 bind main P ?<git newpr %(commit)
 bind main U ?<git updatepr %(commit) --squash
+bind main Y ?<git updatepr %(commit)

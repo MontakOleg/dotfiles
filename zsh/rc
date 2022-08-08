@@ -95,3 +95,7 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit
 compinit
+
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+

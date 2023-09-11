@@ -1,3 +1,4 @@
-bind main P ?<git newpr %(commit)
+bind main P ?<git submitpr %(commit)
 bind main U ?<git updatepr %(commit) --squash
 bind main Y ?<git updatepr %(commit)
+bind main I ?<git rebasepr %(commit)

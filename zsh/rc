@@ -102,3 +102,6 @@ compinit
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# starship shell
+eval "$(starship init zsh)"
+

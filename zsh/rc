@@ -91,10 +91,10 @@ alias lz="lazygit"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # setup asdf
-. $HOME/.asdf/asdf.sh
+#. $HOME/.asdf/asdf.sh
 
 # asdf completions
-fpath=(${ASDF_DIR}/completions $fpath)
+#fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit
 compinit

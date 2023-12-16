@@ -102,3 +102,4 @@ compinit
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+eval "$(~/bin/rtx activate zsh)"

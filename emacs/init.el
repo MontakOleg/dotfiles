@@ -10,3 +10,14 @@
 
 ;; Auto reload Dired and other buffers
 (setq global-auto-revert-non-file-buffers t)
+
+;; Font size 15
+(set-face-attribute 'default nil :height 172)
+
+;; Maximize window
+(toggle-frame-maximized)
+
+;; Save minibuffer prompts history
+(setq history-length 25)
+(savehist-mode 1)
+

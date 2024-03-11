@@ -40,21 +40,30 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Projectile
+;; flycheck
 
-(use-package projectile
-  :config
-  (projectile-mode +1)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
+(use-package flycheck
+  :init (global-flycheck-mode))
 
-;; Ivy
+;; ivy
 
-(use-package ivy
+(use-package diminish)
+
+(use-package counsel
   :diminish
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-extra-directories nil)
-  (ivy-mode 1))
+  (ivy-mode 1)
+  (counsel-mode 1))
+
+;; swift
+
+(use-package swift-mode)
+
+;; yaml
+
+(use-package yaml-mode)
 
 ;;;
 
@@ -63,7 +72,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(diminish ivy projectile)))
+ '(package-selected-packages '(flycheck yaml-mode swift-mode counsel diminish ivy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

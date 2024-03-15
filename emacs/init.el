@@ -57,7 +57,7 @@
 (use-package diminish)
 
 (use-package counsel
-  :diminish
+  :diminish ivy-mode
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-extra-directories nil)

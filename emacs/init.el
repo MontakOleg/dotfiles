@@ -124,7 +124,6 @@
 
 (global-set-key (kbd "s-d") 'duplicate-line-or-region)
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-J") 'join-line)
 
 ;;;
 

@@ -10,7 +10,8 @@
 (load-theme 'tango-dark)
 
 ;; Font size
-(set-face-attribute 'default nil :height 172) ; 120*1.2*1.2
+(set-face-attribute 'default nil :height 154)
+;; (set-face-attribute 'default nil :height 172) ; 120*1.2*1.2
 
 (setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
@@ -94,7 +95,8 @@
 
 (use-package magit
   :custom
-  (magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1))
+  (magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1)
+  (magit-define-global-key-bindings 'recommended))
 
 ;;;
 

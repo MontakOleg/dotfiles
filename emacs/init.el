@@ -98,6 +98,17 @@
   (magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1)
   (magit-define-global-key-bindings 'recommended))
 
+;; evil-nerd-commenter
+
+(use-package evil-nerd-commenter
+  :bind ("s-/" . evilnc-comment-or-uncomment-lines))
+
+;; company
+
+(use-package company
+  :config
+  (global-company-mode))
+
 ;;;
 
 (defun duplicate-line-or-region (&optional n)
@@ -123,7 +134,7 @@
         (forward-char pos)))))
 
 (global-set-key (kbd "s-d") 'duplicate-line-or-region)
-(global-set-key (kbd "s-/") 'comment-or-uncomment-region)
+(global-set-key (kbd "s-f") 'swiper-isearch)
 
 ;;;
 
@@ -133,7 +144,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
+   '(evil-nerd-commenter company magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

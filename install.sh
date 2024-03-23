@@ -12,3 +12,4 @@ ln -sh $dotfiles_dir/kitty ~/.config/kitty
 ln -sh $dotfiles_dir/starship/starship.toml ~/.config/starship.toml
 ln -sh $dotfiles_dir/fish ~/.config/fish
 ln -sh $dotfiles_dir/emacs/init.el ~/.emacs.d/init.el
+ln -sh $dotfiles_dir/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml

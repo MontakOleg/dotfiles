@@ -36,6 +36,9 @@
 ;; Don't pop up UI dialogs when prompting
 (setq use-dialog-box nil)
 
+;; Typing with an active selection overwrites
+(delete-selection-mode t)
+
 ;;; Packages
 
 (require 'package)

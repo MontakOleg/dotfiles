@@ -9,6 +9,9 @@
 (add-to-list 'default-frame-alist '(font . "JetBrains Mono-15"))
 (add-to-list 'default-frame-alist '(line-spacing . 0.2))
 
+;; Cursor
+(setq-default cursor-type 'bar)
+
 ;; Maximize window
 (toggle-frame-maximized)
 (load-theme 'tango-dark)
@@ -38,6 +41,27 @@
 
 ;; Typing with an active selection overwrites
 (delete-selection-mode t)
+
+;; Keybindings
+
+(defun my-join-line (&optional arg beg end)
+  "Join next line into current one."
+  (interactive)
+  (if (use-region-p)
+      (join-line 'nil (region-beginning) (region-end))
+    (join-line 1)))
+
+(defun my-kill-line-or-region ()
+  "If nothing selected, kill whole line, else kill region."
+  (interactive)
+  (if (use-region-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-whole-line)))
+
+(bind-keys
+ ("s-Z" . undo-redo)
+ ("C-J" . my-join-line)
+ ("s-x" . my-kill-line-or-region))
 
 ;;; Packages
 

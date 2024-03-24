@@ -18,6 +18,7 @@
 
 (setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
 (global-display-line-numbers-mode 1)
 
 ;; Make ESC quit promts
@@ -61,7 +62,11 @@
 (bind-keys
  ("s-Z" . undo-redo)
  ("C-J" . my-join-line)
- ("s-x" . my-kill-line-or-region))
+ ("s-x" . my-kill-line-or-region)
+ ("s-A" . counsel-M-x)
+ ("s-O" . project-find-file)
+ ("M-s-l" . indent-region)
+ ("s-<f12>" . imenu))
 
 ;;; Packages
 
@@ -89,6 +94,7 @@
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-extra-directories nil)
+  (setq ivy-initial-inputs-alist nil)
   (ivy-mode 1)
   (counsel-mode 1))
 

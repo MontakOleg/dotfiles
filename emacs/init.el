@@ -19,7 +19,11 @@
 (setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(global-display-line-numbers-mode 1)
+(column-number-mode 1)
+
+;; Line numbers in prog mode
+(add-hook 'prog-mode-hook (lambda ()
+			    (display-line-numbers-mode 1)))
 
 ;; Make ESC quit promts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -43,31 +47,6 @@
 ;; Typing with an active selection overwrites
 (delete-selection-mode t)
 
-;; Keybindings
-
-(defun my-join-line (&optional arg beg end)
-  "Join next line into current one."
-  (interactive)
-  (if (use-region-p)
-      (join-line 'nil (region-beginning) (region-end))
-    (join-line 1)))
-
-(defun my-kill-line-or-region ()
-  "If nothing selected, kill whole line, else kill region."
-  (interactive)
-  (if (use-region-p)
-      (kill-region (region-beginning) (region-end))
-    (kill-whole-line)))
-
-(bind-keys
- ("s-Z" . undo-redo)
- ("C-J" . my-join-line)
- ("s-x" . my-kill-line-or-region)
- ("s-A" . counsel-M-x)
- ("s-O" . project-find-file)
- ("M-s-l" . indent-region)
- ("s-<f12>" . imenu))
-
 ;;; Packages
 
 (require 'package)
@@ -90,7 +69,7 @@
 (use-package diminish)
 
 (use-package counsel
-  :diminish ivy-mode
+  :diminish ivy-mode counsel-mode
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-extra-directories nil)
@@ -166,8 +145,33 @@
         (forward-line 1)
         (forward-char pos)))))
 
-(global-set-key (kbd "s-d") 'duplicate-line-or-region)
-(global-set-key (kbd "s-f") 'swiper-isearch)
+;; Keybindings
+
+(defun my-join-line (&optional arg beg end)
+  "Join next line into current one."
+  (interactive)
+  (if (use-region-p)
+      (join-line 'nil (region-beginning) (region-end))
+    (join-line 1)))
+
+(defun my-kill-line-or-region ()
+  "If nothing selected, kill whole line, else kill region."
+  (interactive)
+  (if (use-region-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-whole-line)))
+
+(bind-keys
+ ("s-Z" . undo-redo)
+ ("C-J" . my-join-line)
+ ("s-x" . my-kill-line-or-region)
+ ("s-A" . counsel-M-x)
+ ("s-O" . project-find-file)
+ ("M-s-l" . indent-region)
+ ("s-<f12>" . imenu)
+ ("s-d" . duplicate-line-or-region)
+ ("s-f" . swiper-isearch)
+ ("s-F" . counsel-ag))
 
 ;;;
 

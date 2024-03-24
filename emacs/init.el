@@ -5,13 +5,13 @@
 ;; larger than the system default.
 (setq frame-inhibit-implied-resize t)
 
+;; Font
+(add-to-list 'default-frame-alist '(font . "JetBrains Mono-15"))
+(add-to-list 'default-frame-alist '(line-spacing . 0.2))
+
 ;; Maximize window
 (toggle-frame-maximized)
 (load-theme 'tango-dark)
-
-;; Font size
-(set-face-attribute 'default nil :height 154)
-;; (set-face-attribute 'default nil :height 172) ; 120*1.2*1.2
 
 (setq ring-bell-function 'ignore)
 (tool-bar-mode -1)

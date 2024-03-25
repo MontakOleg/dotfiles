@@ -1,29 +1,28 @@
 ;;; UI
 
-;; Resizing the Emacs frame can be a terribly expensive part of changing the
-;; font. By inhibiting this, we easily halve startup times with fonts that are
-;; larger than the system default.
-(setq frame-inhibit-implied-resize t)
+(setq save-interprogram-paste-before-kill t
+      backup-by-copying t
+      ring-bell-function 'ignore
+      frame-inhibit-implied-resize t)
+
+(setq-default
+ indent-tabs-mode nil
+ cursor-type 'bar)
 
 ;; Font
 (add-to-list 'default-frame-alist '(font . "JetBrains Mono-15"))
 (add-to-list 'default-frame-alist '(line-spacing . 0.2))
 
-;; Cursor
-(setq-default cursor-type 'bar)
-
 ;; Maximize window
 (toggle-frame-maximized)
 (load-theme 'tango-dark)
 
-(setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (column-number-mode 1)
 
 ;; Line numbers in prog mode
-(add-hook 'prog-mode-hook (lambda ()
-			    (display-line-numbers-mode 1)))
+(add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode 1)))
 
 ;; Make ESC quit promts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -46,6 +45,11 @@
 
 ;; Typing with an active selection overwrites
 (delete-selection-mode t)
+
+;; Store backups in user-emacs-directory/backups
+(unless backup-directory-alist
+    (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
+                                                   "backups")))))
 
 ;;; Packages
 
@@ -81,7 +85,7 @@
   :init
   (ivy-rich-mode 1)
   :config
-  (setq ivy-format-function #'ivy-format-function-line))
+  (setq ivy-format-function 'ivy-format-function-line))
 
 ;; swift
 
@@ -95,8 +99,8 @@
 
 (use-package helpful
   :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
+  (counsel-describe-function-function 'helpful-callable)
+  (counsel-describe-variable-function 'helpful-variable)
   :bind
   ([remap describe-function] . counsel-describe-function)
   ([remap describe-command] . helpful-command)
@@ -125,7 +129,7 @@
   :bind (("M-<up>" . 'er/expand-region)
 	 ("M-<down>" . 'er/contract-region)))
 
-;;;
+;; Keybindings
 
 (defun duplicate-line-or-region (&optional n)
   "Duplicate current line, or region if active.
@@ -149,8 +153,6 @@
         (forward-line 1)
         (forward-char pos)))))
 
-;; Keybindings
-
 (defun my-join-line (&optional arg beg end)
   "Join next line into current one."
   (interactive)
@@ -165,6 +167,9 @@
       (kill-region (region-beginning) (region-end))
     (kill-whole-line)))
 
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR." t)
+
 (bind-keys
  ("s-Z" . undo-redo)
  ("C-J" . my-join-line)
@@ -175,7 +180,8 @@
  ("s-<f12>" . imenu)
  ("s-d" . duplicate-line-or-region)
  ("s-f" . swiper-isearch)
- ("s-F" . counsel-ag))
+ ("s-F" . counsel-ag)
+ ("M-z" . zap-up-to-char))
 
 ;;;
 

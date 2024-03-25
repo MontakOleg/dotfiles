@@ -121,6 +121,10 @@
   :config
   (global-company-mode))
 
+(use-package expand-region
+  :bind (("M-<up>" . 'er/expand-region)
+	 ("M-<down>" . 'er/contract-region)))
+
 ;;;
 
 (defun duplicate-line-or-region (&optional n)
@@ -181,7 +185,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-nerd-commenter company magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
+   '(expand-region evil-nerd-commenter company magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

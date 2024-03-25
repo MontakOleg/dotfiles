@@ -1,3 +1,15 @@
+;; The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 100 1024 1024))
+
+(defun efs/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                   (time-subtract after-init-time before-init-time)))
+           gcs-done))
+
+(add-hook 'emacs-startup-hook #'efs/display-startup-time)
+
 ;;; UI
 
 (setq save-interprogram-paste-before-kill t
@@ -66,7 +78,7 @@
 ;; flycheck
 
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :hook prog-mode)
 
 ;; ivy
 
@@ -82,18 +94,20 @@
   (counsel-mode 1))
 
 (use-package ivy-rich
-  :init
-  (ivy-rich-mode 1)
+  :after ivy
   :config
+  (ivy-rich-mode 1)
   (setq ivy-format-function 'ivy-format-function-line))
 
 ;; swift
 
-(use-package swift-mode)
+(use-package swift-mode
+  :mode ("\\.swift\\'" . swift-mode))
 
 ;; yaml
 
-(use-package yaml-mode)
+(use-package yaml-mode
+  :mode ("\\.\\(yml\\|yaml\\)\\'" . yaml-mode))
 
 ;; helpful
 
@@ -110,6 +124,7 @@
 ;; magit
 
 (use-package magit
+  :commands (magit-status)
   :custom
   (magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1)
   (magit-define-global-key-bindings 'recommended))
@@ -122,12 +137,12 @@
 ;; company
 
 (use-package company
-  :config
-  (global-company-mode))
+  :config (global-company-mode))
 
 (use-package expand-region
   :bind (("M-<up>" . 'er/expand-region)
-	 ("M-<down>" . 'er/contract-region)))
+	 ("M-<down>" . 'er/contract-region))
+  :defer t)
 
 ;; Keybindings
 
@@ -182,6 +197,11 @@
  ("s-f" . swiper-isearch)
  ("s-F" . counsel-ag)
  ("M-z" . zap-up-to-char))
+
+;;;
+
+;; The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 4 1024 1024))
 
 ;;;
 

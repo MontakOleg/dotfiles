@@ -10,7 +10,7 @@ customCommands:
       title: 'Submit new PR'
       body: 'Run git submitpr {{.SelectedLocalCommit.Sha}}?'
 
-    - key: 'U'
+  - key: 'U'
     context: 'commits'
     command: 'git updatepr "{{.SelectedLocalCommit.Sha}}" --squash'
     description: 'squash existing PR with new commit'

@@ -1,6 +1,8 @@
 ;; The default is 800 kilobytes.  Measured in bytes.
 (setq gc-cons-threshold (* 100 1024 1024))
 
+;; (setq use-package-verbose t)
+
 (setq native-comp-async-report-warnings-errors nil)
 
 (defun efs/display-startup-time ()
@@ -89,9 +91,10 @@
 (use-package counsel
   :diminish ivy-mode counsel-mode
   :config
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-extra-directories nil)
-  (setq ivy-initial-inputs-alist nil)
+  (setq ivy-use-virtual-buffers t
+        ivy-extra-directories nil
+        ivy-initial-inputs-alist nil
+        ivy-use-selectable-prompt t)
   (ivy-mode 1)
   (counsel-mode 1))
 
@@ -145,6 +148,17 @@
   :bind (("M-<up>" . 'er/expand-region)
 	 ("M-<down>" . 'er/contract-region))
   :defer t)
+
+;; multiple-cursors
+
+(use-package multiple-cursors
+  :bind (("C-S-c C-S-c" . 'mc/edit-lines)
+         ("C->" . 'mc/mark-next-like-this-word)
+         ("C-<" . 'mc/mark-previous-like-this-word)
+         ("C-c C-<" . 'mc/mark-all-like-this-dwim)
+         :map mc/keymap
+         ("<return>" . nil)
+         ("<escape>" . mc/keyboard-quit)))
 
 ;; Keybindings
 
@@ -213,7 +227,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(expand-region evil-nerd-commenter company magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
+   '(multiple-cursors expand-region evil-nerd-commenter company magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

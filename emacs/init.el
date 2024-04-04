@@ -68,6 +68,14 @@
     (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                    "backups")))))
 
+;; Code folding (collapse / expand)
+
+(add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
+(global-set-key (kbd "s-=") 'hs-show-block)
+(global-set-key (kbd "s-+") 'hs-show-all)
+(global-set-key (kbd "s--") 'hs-hide-block)
+(global-set-key (kbd "s-_") 'hs-hide-all)
+
 ;;; Packages
 
 (require 'package)

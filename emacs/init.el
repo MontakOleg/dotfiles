@@ -26,8 +26,11 @@
  cursor-type 'bar)
 
 ;; Font
-(add-to-list 'default-frame-alist '(font . "JetBrains Mono-15"))
-(add-to-list 'default-frame-alist '(line-spacing . 0.2))
+(setq-default line-spacing 0.1)
+(set-face-attribute 'default nil
+                    ;; :family "JetBrains Mono"
+                    :family "Fira Code"
+                    :height 150)
 
 ;; Maximize window
 (toggle-frame-maximized)

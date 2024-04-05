@@ -179,6 +179,12 @@
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   (setq dumb-jump-force-searcher 'ag))
 
+;; wgrep
+
+(use-package wgrep
+  :commands wgrep-change-to-wgrep-mode
+  :config (setq wgrep-auto-save-buffer t))
+
 ;; Keybindings
 
 (defun duplicate-line-or-region (&optional n)
@@ -246,7 +252,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
+   '(wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -144,7 +144,8 @@
   :commands (magit-status)
   :custom
   (magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1)
-  (magit-define-global-key-bindings 'recommended))
+  (magit-define-global-key-bindings 'recommended)
+  (magit-diff-refine-hunk 'all))
 
 ;; evil-nerd-commenter
 

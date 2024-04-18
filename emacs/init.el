@@ -66,6 +66,11 @@
 ;; Typing with an active selection overwrites
 (delete-selection-mode t)
 
+;; Ediff
+(setq
+ ediff-split-window-function 'split-window-horizontally
+ ediff-window-setup-function 'ediff-setup-windows-plain)
+
 ;; Store backups in user-emacs-directory/backups
 (unless backup-directory-alist
     (setq backup-directory-alist `(("." . ,(concat user-emacs-directory

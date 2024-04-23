@@ -36,8 +36,12 @@
 (toggle-frame-maximized)
 
 ;; Themes
-(require-theme 'modus-themes)
-(modus-themes-load-theme 'modus-operandi-tinted)
+(use-package emacs
+  :config
+  (require-theme 'modus-themes)
+  (setq modus-themes-to-toggle '(modus-operandi-tinted modus-vivendi-tinted))
+  (modus-themes-load-theme 'modus-operandi-tinted))
+
 ;; (disable-theme 'modus-operandi-tinted)
 ;; (load-theme 'tango-dark)
 

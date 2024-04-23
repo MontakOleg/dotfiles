@@ -37,7 +37,7 @@
 
 ;; Themes
 (require-theme 'modus-themes)
-(load-theme 'modus-operandi-tinted)
+(modus-themes-load-theme 'modus-operandi-tinted)
 ;; (disable-theme 'modus-operandi-tinted)
 ;; (load-theme 'tango-dark)
 

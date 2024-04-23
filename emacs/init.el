@@ -19,7 +19,8 @@
 (setq save-interprogram-paste-before-kill t
       backup-by-copying t
       ring-bell-function 'ignore
-      frame-inhibit-implied-resize t)
+      frame-inhibit-implied-resize t
+      inhibit-startup-screen t)
 
 (setq-default
  indent-tabs-mode nil

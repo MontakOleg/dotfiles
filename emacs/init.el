@@ -246,7 +246,6 @@
  ("s-Z" . undo-redo)
  ("C-J" . my-join-line)
  ("s-x" . my-kill-line-or-region)
- ("s-A" . counsel-M-x)
  ("s-O" . project-find-file)
  ("M-s-l" . indent-region)
  ("s-<f12>" . imenu)

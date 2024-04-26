@@ -139,6 +139,8 @@
   :mode ("\\.swift\\'" . swift-mode))
 
 (use-package eglot
+  :custom
+  (eglot-autoshutdown t)
   :config
   (add-to-list 'eglot-server-programs
                '(swift-mode . my-swift-mode:eglot-server-contact)))

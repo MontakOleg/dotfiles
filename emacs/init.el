@@ -136,6 +136,10 @@
 (use-package swift-mode
   :mode ("\\.swift\\'" . swift-mode))
 
+(use-package eglot
+  :config
+  (add-to-list 'eglot-server-programs
+               '(swift-mode . my-swift-mode:eglot-server-contact)))
 ;; yaml
 
 (use-package yaml-mode
@@ -200,6 +204,33 @@
 (use-package wgrep
   :commands wgrep-change-to-wgrep-mode
   :config (setq wgrep-auto-save-buffer t))
+
+;;; Utils
+
+(defun command-output-to-string (command &rest args)
+  "Like `shell-command-to-string' but dropping error output.
+
+Also trims whitespace from the ends of any output."
+  (string-trim
+   (with-output-to-string
+    (with-current-buffer standard-output
+      (apply #'call-process command nil '(t nil) nil args)))))
+
+;;; Xcode + Eglot
+
+(defun my-swift-mode:xcrun (&rest args)
+  "Invoke xcrun with the given ARGS.
+
+The result is returned as a string."
+  (apply #'command-output-to-string "xcrun" args))
+
+;;;###autoload
+(defun my-swift-mode:eglot-server-contact (_ignored)
+  "Locate the sourcekit-lsp executable in the active Xcode
+installation and return its path."
+  (list (my-swift-mode:xcrun "--find" "sourcekit-lsp")))
+
+;;; End of Xcode + Eglot
 
 ;; Keybindings
 

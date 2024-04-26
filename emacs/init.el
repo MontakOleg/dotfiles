@@ -106,10 +106,12 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; flycheck
+;; flymake
 
-(use-package flycheck
-  :hook prog-mode)
+(use-package flymake
+  :hook prog-mode
+  :bind (("<f2>" . flymake-goto-next-error)
+         ("<S-f2>" . flymake-goto-prev-error)))
 
 ;; ivy
 
@@ -300,7 +302,7 @@ installation and return its path."
  '(custom-safe-themes
    '("c7a926ad0e1ca4272c90fce2e1ffa7760494083356f6bb6d72481b879afce1f2" "c1638a7061fb86be5b4347c11ccf274354c5998d52e6d8386e997b862773d1d2" default))
  '(package-selected-packages
-   '(modus-themes wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful ivy-rich flycheck yaml-mode swift-mode counsel diminish ivy)))
+   '(modus-themes wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful ivy-rich yaml-mode swift-mode counsel diminish ivy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

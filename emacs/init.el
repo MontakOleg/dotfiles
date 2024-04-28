@@ -118,25 +118,33 @@
   :bind (("<f2>" . flymake-goto-next-error)
          ("<S-f2>" . flymake-goto-prev-error)))
 
-;; ivy
+;; vertico
 
-(use-package diminish)
-
-(use-package counsel
-  :diminish ivy-mode counsel-mode
+(use-package vertico
   :config
-  (setq ivy-use-virtual-buffers t
-        ivy-extra-directories nil
-        ivy-initial-inputs-alist nil
-        ivy-use-selectable-prompt t)
-  (ivy-mode 1)
-  (counsel-mode 1))
+  (setq vertico-resize nil)
+  (vertico-mode 1))
 
-(use-package ivy-rich
-  :after ivy
+(use-package marginalia
   :config
-  (ivy-rich-mode 1)
-  (setq ivy-format-function 'ivy-format-function-line))
+  (marginalia-mode 1))
+
+(use-package orderless
+  :config
+  (setq completion-styles '(orderless basic)))
+
+(use-package consult
+  :bind (("C-x b" . consult-buffer)))
+
+(use-package embark
+  :bind (("C-." . embark-act)
+         :map minibuffer-local-map
+         ("C-c C-c" . embark-collect)
+         ("C-c C-e" . embark-export)))
+
+(use-package embark-consult)
+
+(recentf-mode 1)
 
 ;; swift
 
@@ -157,13 +165,10 @@
 ;; helpful
 
 (use-package helpful
-  :custom
-  (counsel-describe-function-function 'helpful-callable)
-  (counsel-describe-variable-function 'helpful-variable)
   :bind
-  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-function] . helpful-callable)
   ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-variable] . helpful-variable)
   ([remap describe-key] . helpful-key))
 
 ;; magit
@@ -211,6 +216,10 @@
 ;; wgrep
 
 (use-package wgrep
+  :bind ( :map grep-mode-map
+          ("e" . wgrep-change-to-wgrep-mode)
+          ("C-x C-q" . wgrep-change-to-wgrep-mode)
+          ("C-c C-c" . wgrep-finish-edit))
   :commands wgrep-change-to-wgrep-mode
   :config (setq wgrep-auto-save-buffer t))
 
@@ -290,8 +299,8 @@ installation and return its path."
  ("M-s-l" . indent-region)
  ("s-<f12>" . imenu)
  ("s-d" . duplicate-line-or-region)
- ("s-f" . swiper-isearch)
- ("s-F" . counsel-ag)
+ ("s-f" . consult-line)
+ ("s-F" . consult-ripgrep)
  ("M-z" . zap-up-to-char))
 
 ;;;
@@ -309,7 +318,7 @@ installation and return its path."
  '(custom-safe-themes
    '("c7a926ad0e1ca4272c90fce2e1ffa7760494083356f6bb6d72481b879afce1f2" "c1638a7061fb86be5b4347c11ccf274354c5998d52e6d8386e997b862773d1d2" default))
  '(package-selected-packages
-   '(modus-themes wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful ivy-rich yaml-mode swift-mode counsel diminish ivy)))
+   '(embark-consult embark orderless consult marginalia vertico modus-themes wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful yaml-mode swift-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

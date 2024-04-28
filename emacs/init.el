@@ -94,6 +94,11 @@
 (global-set-key (kbd "s--") 'hs-hide-block)
 (global-set-key (kbd "s-_") 'hs-hide-all)
 
+;; Minibuffer
+
+(setq enable-recursive-minibuffers t)
+(minibuffer-depth-indicate-mode 1)
+
 ;;; Packages
 
 (require 'package)

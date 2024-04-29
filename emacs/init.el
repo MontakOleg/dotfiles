@@ -300,7 +300,7 @@ installation and return its path."
  ("s-x" . my-kill-line-or-region)
  ("s-O" . project-find-file)
  ("M-s-l" . indent-region)
- ("s-<f12>" . imenu)
+ ("s-<f12>" . consult-imenu)
  ("s-d" . duplicate-line-or-region)
  ("s-f" . consult-line)
  ("s-F" . consult-ripgrep)

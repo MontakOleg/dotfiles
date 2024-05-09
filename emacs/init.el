@@ -20,7 +20,8 @@
       backup-by-copying t
       ring-bell-function 'ignore
       frame-inhibit-implied-resize t
-      inhibit-startup-screen t)
+      inhibit-startup-screen t
+      org-support-shift-select t)
 
 (setq-default
  indent-tabs-mode nil

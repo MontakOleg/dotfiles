@@ -141,7 +141,9 @@
   :bind (("C-." . embark-act)
          :map minibuffer-local-map
          ("C-c C-c" . embark-collect)
-         ("C-c C-e" . embark-export)))
+         ("C-c C-e" . embark-export))
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command))
 
 (use-package embark-consult)
 

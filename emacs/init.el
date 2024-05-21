@@ -222,8 +222,10 @@
          ("C->" . 'mc/mark-next-like-this)
          ("C-<" . 'mc/mark-previous-like-this)
          ("C-c C-<" . 'mc/mark-all-like-this-dwim)
+         ("C-S-<mouse-1>" . 'mc/add-cursor-on-click)
+         ("C-M->" . 'mc/unmark-next-like-this)
          :map mc/keymap
-         ("<return>" . nil)
+         ;; ("<return>" . nil)
          ("<escape>" . mc/keyboard-quit)))
 
 ;; dumb-jump

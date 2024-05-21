@@ -12,6 +12,7 @@ ln -sh $dotfiles_dir/kitty ~/.config/kitty
 ln -sh $dotfiles_dir/starship/starship.toml ~/.config/starship.toml
 ln -sh $dotfiles_dir/fish ~/.config/fish
 ln -sh $dotfiles_dir/emacs/init.el ~/.emacs.d/init.el
+ln -sh $dotfiles_dir/emacs/startup ~/.emacs.d/startup
 ln -sh $dotfiles_dir/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 ln -sh $dotfiles_dir/bin/mitm_start.sh ~/.local/bin/mitm_start.sh
 ln -sh $dotfiles_dir/ripgreprc ~/.config/ripgreprc

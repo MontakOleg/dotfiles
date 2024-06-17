@@ -225,7 +225,7 @@
          ("C-S-<mouse-1>" . 'mc/add-cursor-on-click)
          ("C-M->" . 'mc/unmark-next-like-this)
          :map mc/keymap
-         ;; ("<return>" . nil)
+         ("<return>" . nil)
          ("<escape>" . mc/keyboard-quit)))
 
 ;; dumb-jump

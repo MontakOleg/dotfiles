@@ -115,6 +115,34 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+;; Quelpa
+
+(unless (package-installed-p 'quelpa)
+  (with-temp-buffer
+    (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
+
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://github.com/quelpa/quelpa-use-package.git"))
+
+(require 'quelpa-use-package)
+
+;; Copilot
+
+(use-package copilot
+  :quelpa (copilot :fetcher github
+                   :repo "copilot-emacs/copilot.el"
+                   :branch "main"
+                   :files ("*.el"))
+  :hook prog-mode
+  :bind (
+         :map copilot-completion-map
+         ("<tab>" . copilot-accept-completion)
+         ("TAB" . copilot-accept-completion)))
+
 ;; flymake
 
 (use-package flymake
@@ -311,7 +339,7 @@ installation and return its path."
  '(custom-safe-themes
    '("c7a926ad0e1ca4272c90fce2e1ffa7760494083356f6bb6d72481b879afce1f2" "c1638a7061fb86be5b4347c11ccf274354c5998d52e6d8386e997b862773d1d2" default))
  '(package-selected-packages
-   '(exec-path-from-shell languagetool markdown-mode vterm embark-consult embark orderless consult marginalia vertico modus-themes wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful yaml-mode swift-mode)))
+   '(editorconfig copilot quelpa-use-package quelpa exec-path-from-shell languagetool markdown-mode vterm embark-consult embark orderless consult marginalia vertico modus-themes wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful yaml-mode swift-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

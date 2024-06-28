@@ -21,7 +21,10 @@
       ring-bell-function 'ignore
       frame-inhibit-implied-resize t
       inhibit-startup-screen t
-      org-support-shift-select t)
+      ;; org mode
+      org-support-shift-select t
+      org-startup-indented t
+      org-log-done 'time)
 
 (setq-default
  indent-tabs-mode nil

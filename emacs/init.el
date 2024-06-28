@@ -24,7 +24,8 @@
       ;; org mode
       org-support-shift-select t
       org-startup-indented t
-      org-log-done 'time)
+      org-log-done 'time
+      org-priority-enable-commands nil)
 
 (setq-default
  indent-tabs-mode nil

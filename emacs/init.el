@@ -198,6 +198,11 @@
         languagetool-console-command "/opt/homebrew/Cellar/languagetool/6.4/libexec/languagetool-commandline.jar"
         languagetool-server-command "/opt/homebrew/Cellar/languagetool/6.4/libexec/languagetool-server.jar"))
 
+;; ruby
+
+(use-package ruby-mode
+  :mode ("Fastfile" "Appfile" "Scanfile" "Matchfile" "Gemfile"))
+
 ;; swift
 
 (use-package swift-mode

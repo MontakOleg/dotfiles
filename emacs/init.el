@@ -25,7 +25,10 @@
       org-support-shift-select t
       org-startup-indented t
       org-log-done 'time
-      org-priority-enable-commands nil)
+      org-priority-enable-commands nil
+      ;; dired
+      dired-listing-switches "-lah"  ; human readable file sizes
+      )
 
 (setq-default
  indent-tabs-mode nil
@@ -142,7 +145,14 @@
   :bind (
          :map copilot-completion-map
          ("<tab>" . copilot-accept-completion)
-         ("TAB" . copilot-accept-completion)))
+         ("TAB" . copilot-accept-completion))
+
+  :config
+  ;; (add-to-list 'copilot-indentation-alist '(prog-mode . 2))
+  ;; (add-to-list 'copilot-indentation-alist '(org-mode . 2))
+  ;; (add-to-list 'copilot-indentation-alist '(text-mode . 2))
+  ;; (add-to-list 'copilot-indentation-alist '(closure-mode . 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode . 2)))
 
 ;; flymake
 

@@ -328,6 +328,14 @@ installation and return its path."
 
 ;;; End of Xcode + Eglot
 
+;; dired
+
+(defun dired-mode-setup ()
+  "Setup for dired mode."
+  (dired-hide-details-mode t))
+
+(add-hook 'dired-mode-hook 'dired-mode-setup)
+
 ;; Keybindings
 
 (autoload 'zap-up-to-char "misc"

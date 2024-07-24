@@ -307,10 +307,18 @@
 
 (load (expand-file-name "startup/utils.el" user-emacs-directory))
 
+(add-to-list 'load-path (concat user-emacs-directory "localpackages"))
+
 ;; kotlin-ts-mode
 
 (use-package kotlin-ts-mode
   :mode "\\.kt\\'")
+
+;; xcode-build
+
+(use-package xcode-build
+  :ensure nil
+  :after swift-mode)
 
 ;;; Xcode + Eglot
 

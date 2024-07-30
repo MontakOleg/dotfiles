@@ -149,7 +149,7 @@
 
   :config
   ;; (add-to-list 'copilot-indentation-alist '(prog-mode . 2))
-  ;; (add-to-list 'copilot-indentation-alist '(org-mode . 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode . 2))
   ;; (add-to-list 'copilot-indentation-alist '(text-mode . 2))
   ;; (add-to-list 'copilot-indentation-alist '(closure-mode . 2))
   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode . 2)))
@@ -229,16 +229,35 @@
 (use-package ob-swift
   :after org)
 
+;; http requests
+
+(use-package ob-http
+  :after org)
+
 ;; org
 
 (use-package org
   :ensure nil
   :custom (org-confirm-babel-evaluate nil))
 
+(use-package ob
+  :ensure nil
+  :config
+  (add-to-list 'org-src-lang-modes '("swift" . swift))
+  (org-babel-do-load-languages 'org-babel-load-languages '((swift . t)
+                                                           (http . t)
+                                                           (shell . t))))
+
 ;; yaml
 
 (use-package yaml-mode
   :mode ("\\.\\(yml\\|yaml\\)\\'" . yaml-mode))
+
+;; gptel
+
+(use-package gptel
+  :bind
+  ("C-c RET" . gptel-send))
 
 ;; helpful
 
@@ -341,8 +360,7 @@ The result is returned as a string."
 
 ;;;###autoload
 (defun my-swift-mode:eglot-server-contact (_ignored)
-  "Locate the sourcekit-lsp executable in the active Xcode
-installation and return its path."
+  "Locate the sourcekit-lsp executable in the active Xcode installation and return its path."
   (list (my-swift-mode:xcrun "--find" "sourcekit-lsp")))
 
 ;;; End of Xcode + Eglot
@@ -387,7 +405,7 @@ installation and return its path."
  '(custom-safe-themes
    '("c7a926ad0e1ca4272c90fce2e1ffa7760494083356f6bb6d72481b879afce1f2" "c1638a7061fb86be5b4347c11ccf274354c5998d52e6d8386e997b862773d1d2" default))
  '(package-selected-packages
-   '(ob-swift kotlin-ts-mode editorconfig copilot quelpa-use-package quelpa exec-path-from-shell languagetool markdown-mode vterm embark-consult embark orderless consult marginalia vertico modus-themes wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful yaml-mode swift-mode)))
+   '(gptel ob-http ob-swift kotlin-ts-mode editorconfig copilot quelpa-use-package quelpa exec-path-from-shell languagetool markdown-mode vterm embark-consult embark orderless consult marginalia vertico modus-themes wgrep dumb-jump multiple-cursors expand-region evil-nerd-commenter company magit helpful yaml-mode swift-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

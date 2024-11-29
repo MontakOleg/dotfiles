@@ -14,7 +14,11 @@ for interface in $interfaces; do
   networksetup -setsecurewebproxystate "$interface" on
 done
 
-mitmproxy
+if [[ $1 == "--web" ]] ; then
+    mitmweb
+else
+    mitmproxy
+fi
 
 for interface in $interfaces; do
   echo "Disabling proxy on $interface"

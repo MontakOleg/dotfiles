@@ -9,6 +9,7 @@ ln -sh $dotfiles_dir/zsh/rc ~/.zshrc
 ln -sh $dotfiles_dir/tig/rc ~/.tigrc
 ln -sh $dotfiles_dir/ruby/gemrc ~/.gemrc
 ln -sh $dotfiles_dir/kitty ~/.config/kitty
+ln -sh $dotfiles_dir/ghostty ~/.config/ghostty
 ln -sh $dotfiles_dir/starship/starship.toml ~/.config/starship.toml
 ln -sh $dotfiles_dir/fish ~/.config/fish
 ln -sh $dotfiles_dir/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml

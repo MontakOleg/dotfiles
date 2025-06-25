@@ -17,6 +17,12 @@ set -gx PATH \
     /opt/homebrew/bin \
     $PATH
 
+set -gx EDITOR nvim
+
+# C-x C-e to edit current command
+# By default fish uses alt-e and alt-v
+bind \cx\ce edit_command_buffer
+
 # Setup mise
 ~/.local/bin/mise activate fish | source
 

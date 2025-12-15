@@ -1,41 +1,37 @@
 customCommands:
-
   - key: 'O'
     context: 'commits'
     command: 'git submitpr "{{.SelectedLocalCommit.Sha}}"'
     description: 'submit new pr'
-    subprocess: true
     prompts:
-    - type: 'confirm'
-      title: 'Submit new PR'
-      body: 'Run git submitpr {{.SelectedLocalCommit.Sha}}?'
-
+      - type: 'confirm'
+        title: 'Submit new PR'
+        body: 'Run git submitpr {{.SelectedLocalCommit.Sha}}?'
+    output: terminal
   - key: 'U'
     context: 'commits'
     command: 'git updatepr "{{.SelectedLocalCommit.Sha}}" --squash'
     description: 'squash existing PR with new commit'
-    subprocess: true
     prompts:
-    - type: 'confirm'
-      title: 'Squash PR'
-      body: 'Run git updatepr {{.SelectedLocalCommit.Sha}} --squash?'
-
+      - type: 'confirm'
+        title: 'Squash PR'
+        body: 'Run git updatepr {{.SelectedLocalCommit.Sha}} --squash?'
+    output: terminal
   - key: 'Y'
     context: 'commits'
     command: 'git updatepr "{{.SelectedLocalCommit.Sha}}"'
     description: 'add new commit to existing PR'
-    subprocess: true
     prompts:
-    - type: 'confirm'
-      title: 'Add commit to PR'
-      body: 'Run git updatepr {{.SelectedLocalCommit.Sha}}?'
-
+      - type: 'confirm'
+        title: 'Add commit to PR'
+        body: 'Run git updatepr {{.SelectedLocalCommit.Sha}}?'
+    output: terminal
   - key: 'I'
     context: 'commits'
     command: 'git rebasepr "{{.SelectedLocalCommit.Sha}}"'
     description: 'rebase PR'
-    subprocess: true
     prompts:
-    - type: 'confirm'
-      title: 'Rebase PR'
-      body: 'Run git rebasepr {{.SelectedLocalCommit.Sha}}?'
+      - type: 'confirm'
+        title: 'Rebase PR'
+        body: 'Run git rebasepr {{.SelectedLocalCommit.Sha}}?'
+    output: terminal

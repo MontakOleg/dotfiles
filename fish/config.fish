@@ -3,6 +3,7 @@ if status is-interactive
 end
 
 abbr --add emc emacsclient -n
+abbr --add noquar /usr/bin/xattr -r -d com.apple.quarantine
 
 set -gx LC_ALL en_US.UTF-8
 set -gx LANG en_US.UTF-8

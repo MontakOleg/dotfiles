@@ -6,6 +6,8 @@ ln -sh $dotfiles_dir/vim ~/
 mv ~/vim ~/.vim
 ln -sh $dotfiles_dir/vim/rc ~/.vimrc
 ln -sh $dotfiles_dir/zsh/rc ~/.zshrc
+ln -sh $dotfiles_dir/zsh/profile ~/.zprofile
+ln -sh $dotfiles_dir/zsh/zshenv ~/.zshenv
 ln -sh $dotfiles_dir/tig/rc ~/.tigrc
 ln -sh $dotfiles_dir/ruby/gemrc ~/.gemrc
 ln -sh $dotfiles_dir/kitty ~/.config/kitty

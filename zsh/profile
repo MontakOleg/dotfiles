@@ -1,0 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv --shell=zsh)"
+
+
+# Added by Toolbox App
+export PATH="$PATH:/Users/me/Library/Application Support/JetBrains/Toolbox/scripts"

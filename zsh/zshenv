@@ -1,0 +1,10 @@
+# Minimal setup for all zsh shells (including non-interactive).
+# Ensures mise shims are available for tools run by agents/CI.
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh --shims)"
+fi

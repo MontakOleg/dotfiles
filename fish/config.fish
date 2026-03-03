@@ -12,7 +12,6 @@ set -gx PATH \
     /Users/me/.local/share/mise/shims \
     /Users/me/go/bin \
     /Users/me/.local/bin \
-    /Users/me/.mint/bin \
     /Users/me/dev/other/git-pile/bin \
     /usr/local/bin \
     /opt/homebrew/bin \
@@ -27,3 +26,10 @@ bind \cx\ce edit_command_buffer
 # Setup mise
 ~/.local/bin/mise activate fish | source
 
+
+# pnpm
+set -gx PNPM_HOME "/Users/me/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

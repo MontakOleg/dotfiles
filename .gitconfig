@@ -1,0 +1,54 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Oleg Montak
+	email = oleg.montak@gmail.com
+[push]
+	autoSetupRemote = true
+
+[core]
+  sshCommand = "ssh -i ~/.ssh/id_rsa -o 'IdentitiesOnly yes'"
+  # sshCommand = "ssh -i ~/.ssh/id_ed25519 -o 'IdentitiesOnly yes'"
+
+[rerere]
+	enabled = true
+	autoupdate = true
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[fetch]
+	prune = true
+[pile]
+	cleanupRemoteOnSubmitFailure = true
+
+[merge]
+	tool = emacs
+	conflictstyle = diff3
+[mergetool "emacs"]
+	cmd = emacsclient -c $MERGED
+
+[diff]
+	tool = emacs
+[difftool "emacs"]
+	cmd = emacsclient -c --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+
+[gpg "ssh"]
+	allowedSignersFile = /Users/me/.ssh/allowed_signers
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[advice]
+	skippedCherryPicks = false
+
+[init]
+	defaultBranch = main
+
+[includeIf "gitdir:~/dev/simple/"]
+  path = ~/dev/simple/.gitconfig
+
+[includeIf "gitdir:~/dev/simple/simple-org-public/"]
+  path = ~/dev/simple/simple-org-public/.gitconfig

@@ -1,5 +1,6 @@
 tap "d12frosted/emacs-plus"
 brew "aria2"
+brew "bat"
 brew "btop"
 brew "cmake"
 brew "codex-acp"

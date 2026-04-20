@@ -22,7 +22,7 @@ end
 # pnpm end
 
 set -gx PATH \
-    /Users/me/.local/share/mise/shims \
+    # /Users/me/.local/share/mise/shims \
     /Users/me/go/bin \
     /Users/me/.local/bin \
     /Users/me/dev/other/git-pile/bin \

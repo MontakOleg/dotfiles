@@ -22,7 +22,6 @@ end
 # pnpm end
 
 set -gx PATH \
-    # /Users/me/.local/share/mise/shims \
     /Users/me/go/bin \
     /Users/me/.local/bin \
     /Users/me/dev/other/git-pile/bin \
@@ -37,4 +36,8 @@ set -gx EDITOR nvim
 bind \cx\ce edit_command_buffer
 
 # Setup mise
-~/.local/bin/mise activate fish | source
+if status is-interactive
+    ~/.local/bin/mise activate fish | source
+else
+    ~/.local/bin/mise activate fish --shims | source
+end

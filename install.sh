@@ -2,6 +2,9 @@
 
 dotfiles_dir=~/dotfiles
 
+mkdir -p ~/.local/bin
+mkdir -p ~/.config
+
 ln -sh $dotfiles_dir/vim ~/
 mv ~/vim ~/.vim
 ln -sh $dotfiles_dir/vim/rc ~/.vimrc

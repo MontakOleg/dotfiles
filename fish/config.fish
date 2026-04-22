@@ -15,20 +15,21 @@ fish_add_path -g "$ANDROID_SDK_ROOT/emulator" "$ANDROID_SDK_ROOT/platform-tools"
 # android end
 
 # pnpm
-set -gx PNPM_HOME "/Users/me/Library/pnpm"
+set -gx PNPM_HOME "$HOME/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
 
 set -gx PATH \
-    /Users/me/go/bin \
-    /Users/me/.local/bin \
-    /Users/me/dev/other/git-pile/bin \
+    $HOME/go/bin \
+    $HOME/.local/bin \
+    $HOME/dev/other/git-pile/bin \
     /usr/local/bin \
     /opt/homebrew/bin \
     $PATH
 
+set -gx RIPGREP_CONFIG_PATH "$HOME/.config/ripgreprc"
 set -gx EDITOR nvim
 
 # C-x C-e to edit current command

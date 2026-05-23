@@ -16,8 +16,9 @@ fish_add_path -g "$ANDROID_SDK_ROOT/emulator" "$ANDROID_SDK_ROOT/platform-tools"
 
 # pnpm
 set -gx PNPM_HOME "$HOME/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+set -gx PNPM_BIN "$PNPM_HOME/bin"
+if not string match -q -- $PNPM_BIN $PATH
+  set -gx PATH "$PNPM_BIN" $PATH
 end
 # pnpm end
 

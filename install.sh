@@ -4,6 +4,7 @@ dotfiles_dir=~/dotfiles
 
 mkdir -p ~/.local/bin
 mkdir -p ~/.config
+mkdir -p ~/Library/LaunchAgents
 
 ln -sh $dotfiles_dir/vim ~/
 mv ~/vim ~/.vim
@@ -19,3 +20,4 @@ ln -sh $dotfiles_dir/lazygit/config.yml ~/Library/Application\ Support/lazygit/c
 ln -sh $dotfiles_dir/bin/mitm_start.sh ~/.local/bin/mitm_start.sh
 ln -sh $dotfiles_dir/ripgreprc ~/.config/ripgreprc
 ln -sh $dotfiles_dir/.gitconfig ~/.gitconfig
+ln -sh $dotfiles_dir/launch-agents/com.oleg.ssh-add-keychain.plist ~/Library/LaunchAgents/com.oleg.ssh-add-keychain.plist

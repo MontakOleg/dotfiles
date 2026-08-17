@@ -1,23 +1,37 @@
 #!/bin/sh
 
-dotfiles_dir=~/dotfiles
+dotfiles_dir="$HOME/dotfiles"
 
-mkdir -p ~/.local/bin
-mkdir -p ~/.config
-mkdir -p ~/Library/LaunchAgents
+# Symlink src -> dst, replacing an existing symlink but never clobbering
+# anything real. Re-running is safe.
+link() {
+    src="$1"
+    dst="$2"
 
-ln -sh $dotfiles_dir/vim ~/
-mv ~/vim ~/.vim
-ln -sh $dotfiles_dir/vim/rc ~/.vimrc
-ln -sh $dotfiles_dir/zsh/rc ~/.zshrc
-ln -sh $dotfiles_dir/zsh/profile ~/.zprofile
-ln -sh $dotfiles_dir/zsh/zshenv ~/.zshenv
-ln -sh $dotfiles_dir/tig/rc ~/.tigrc
-ln -sh $dotfiles_dir/ruby/gemrc ~/.gemrc
-ln -sh $dotfiles_dir/ghostty ~/.config/ghostty
-ln -sh $dotfiles_dir/fish ~/.config/fish
-ln -sh $dotfiles_dir/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
-ln -sh $dotfiles_dir/bin/mitm_start.sh ~/.local/bin/mitm_start.sh
-ln -sh $dotfiles_dir/ripgreprc ~/.config/ripgreprc
-ln -sh $dotfiles_dir/.gitconfig ~/.gitconfig
-ln -sh $dotfiles_dir/launch-agents/com.oleg.ssh-add-keychain.plist ~/Library/LaunchAgents/com.oleg.ssh-add-keychain.plist
+    if [ -e "$dst" ] && [ ! -L "$dst" ]; then
+        echo "skip: $dst exists and is not a symlink" >&2
+        return
+    fi
+
+    ln -sfn "$src" "$dst"
+}
+
+mkdir -p "$HOME/.local/bin"
+mkdir -p "$HOME/.config"
+mkdir -p "$HOME/Library/LaunchAgents"
+mkdir -p "$HOME/Library/Application Support/lazygit"
+
+link "$dotfiles_dir/vim" "$HOME/.vim"
+link "$dotfiles_dir/vim/rc" "$HOME/.vimrc"
+link "$dotfiles_dir/zsh/rc" "$HOME/.zshrc"
+link "$dotfiles_dir/zsh/profile" "$HOME/.zprofile"
+link "$dotfiles_dir/zsh/zshenv" "$HOME/.zshenv"
+link "$dotfiles_dir/tig/rc" "$HOME/.tigrc"
+link "$dotfiles_dir/ruby/gemrc" "$HOME/.gemrc"
+link "$dotfiles_dir/ghostty" "$HOME/.config/ghostty"
+link "$dotfiles_dir/fish" "$HOME/.config/fish"
+link "$dotfiles_dir/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
+link "$dotfiles_dir/bin/mitm_start.sh" "$HOME/.local/bin/mitm_start.sh"
+link "$dotfiles_dir/ripgreprc" "$HOME/.config/ripgreprc"
+link "$dotfiles_dir/.gitconfig" "$HOME/.gitconfig"
+link "$dotfiles_dir/launch-agents/com.oleg.ssh-add-keychain.plist" "$HOME/Library/LaunchAgents/com.oleg.ssh-add-keychain.plist"

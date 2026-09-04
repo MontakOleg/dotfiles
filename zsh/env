@@ -1,9 +1,30 @@
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="$HOME/dev/other/git-pile/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+# Shared by every zsh invocation, including non-interactive agent commands.
+# Keep inherited tool paths and make repeated sourcing idempotent.
+typeset -U path
+path=(
+  "${MISE_SHIMS_DIR:-${MISE_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/mise}/shims}"
+  "$HOME/go/bin"
+  "$HOME/.local/bin"
+  "$HOME/dev/other/git-pile/bin"
+  /opt/homebrew/bin
+  /opt/homebrew/sbin
+  $path
+)
+export PATH
 
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+export LANG=en_US.UTF-8
+export EDITOR=nvim
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+export PNPM_HOME="$HOME/Library/pnpm"
+export PNPM_BIN="$PNPM_HOME/bin"
+
+for dotfiles_path in "$PNPM_BIN" \
+  "$ANDROID_SDK_ROOT/emulator" "$ANDROID_SDK_ROOT/platform-tools" \
+  "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
+  "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"; do
+  [[ -d "$dotfiles_path" ]] && path+=("$dotfiles_path")
+done
+unset dotfiles_path

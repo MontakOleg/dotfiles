@@ -14,7 +14,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'mileszs/ack.vim'
 
 " fuzzy finder
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " swift support
@@ -41,17 +41,14 @@ call plug#end()
 :set mouse=a
 
 " Tabs
-setlocal shiftwidth=4 softtabstop=4 expandtab
+set shiftwidth=4 softtabstop=4 expandtab
 
-" Use ag if available
-if executable('ag')
-  " Use Ag over Grep
+" Prefer ripgrep (installed by Brewfile) for project search.
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case
+  let g:ackprg = 'rg --vimgrep --smart-case'
+elseif executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " Use ag in :Ack
   let g:ackprg = 'ag --vimgrep'
 endif
 

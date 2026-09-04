@@ -1,5 +1,6 @@
-eval "$(/opt/homebrew/bin/brew shellenv --shell=zsh)"
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv --shell=zsh)"
+fi
 
-
-# Added by Toolbox App
-export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+# /etc/zprofile and Homebrew reorder PATH after .zshenv. Restore mise's priority.
+source "$HOME/dotfiles/zsh/env"

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 dotfiles_dir="$HOME/dotfiles"
 
 # Symlink src -> dst, replacing an existing symlink but never clobbering
@@ -23,6 +25,7 @@ mkdir -p "$HOME/Library/Application Support/lazygit"
 
 link "$dotfiles_dir/vim" "$HOME/.vim"
 link "$dotfiles_dir/vim/rc" "$HOME/.vimrc"
+link "$dotfiles_dir/nvim" "$HOME/.config/nvim"
 link "$dotfiles_dir/zsh/rc" "$HOME/.zshrc"
 link "$dotfiles_dir/zsh/profile" "$HOME/.zprofile"
 link "$dotfiles_dir/zsh/zshenv" "$HOME/.zshenv"

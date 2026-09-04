@@ -25,7 +25,7 @@
 	tool = emacs
 	conflictstyle = diff3
 [mergetool "emacs"]
-	cmd = emacsclient -c $MERGED
+	cmd = emacsclient -c \"$MERGED\"
 
 [diff]
 	tool = emacs
@@ -33,7 +33,7 @@
 	cmd = emacsclient -c --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 
 [gpg "ssh"]
-	allowedSignersFile = /Users/me/.ssh/allowed_signers
+	allowedSignersFile = ~/.ssh/allowed_signers
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f

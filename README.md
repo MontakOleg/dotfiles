@@ -5,16 +5,22 @@ commands. Clone this repository to `~/dotfiles`.
 
 ## Installation
 
-Install Homebrew and mise first. mise is managed separately from Homebrew and
-must be available in `~/.local/bin` or on `PATH`.
+Install Homebrew and mise first. mise is managed separately from Homebrew;
+make `mise` available on `PATH` for the commands below.
 
 ```sh
 brew bundle --file="$HOME/dotfiles/Brewfile"
+mise trust "$HOME/dotfiles/mise.toml"
+mise -C "$HOME/dotfiles" bootstrap dotfiles apply --dry-run
 ~/dotfiles/install.sh
 nvim +PlugInstall
 ```
 
-The installer replaces symlinks but skips existing regular files and directories.
+`mise.toml` declares the application and shell config links. `install.sh` applies
+them through mise, then links the proxy helper and SSH LaunchAgent. mise reports
+conflicting config targets without overwriting them; resolve those conflicts
+before rerunning. For the two remaining links, the installer replaces symlinks
+but skips existing regular files and directories.
 Vim and Neovim share `vim/rc`; FZF's binary comes from Homebrew and its Vim
 integration from vim-plug. Oh My Zsh is optional. `setup_mac.sh` separately applies
 the Dock and input preferences.

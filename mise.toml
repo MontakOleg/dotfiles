@@ -1,0 +1,14 @@
+[dotfiles]
+"~/.vim" = { source = "vim", mode = "symlink" }
+"~/.vimrc" = { source = "vim/rc", mode = "symlink" }
+"~/.config/nvim" = { source = "nvim", mode = "symlink" }
+"~/.zshrc" = { source = "zsh/rc", mode = "symlink" }
+"~/.zprofile" = { source = "zsh/profile", mode = "symlink" }
+"~/.zshenv" = { source = "zsh/zshenv", mode = "symlink" }
+"~/.tigrc" = { source = "tig/rc", mode = "symlink" }
+"~/.gemrc" = { source = "ruby/gemrc", mode = "symlink" }
+"~/.config/ghostty" = { source = "ghostty", mode = "symlink" }
+"~/.config/fish" = { source = "fish", mode = "symlink" }
+"~/Library/Application Support/lazygit/config.yml" = { source = "lazygit/config.yml", mode = "symlink" }
+"~/.config/ripgreprc" = { source = "ripgreprc", mode = "symlink" }
+"~/.gitconfig" = { source = ".gitconfig", mode = "symlink" }

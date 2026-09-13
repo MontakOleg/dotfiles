@@ -11,19 +11,19 @@ make `mise` available on `PATH` for the commands below.
 ```sh
 brew bundle --file="$HOME/dotfiles/Brewfile"
 mise trust "$HOME/dotfiles/mise.toml"
-mise -C "$HOME/dotfiles" bootstrap dotfiles apply --dry-run
+mise -C "$HOME/dotfiles" bootstrap --only dotfiles,defaults --dry-run
 ~/dotfiles/install.sh
 nvim +PlugInstall
 ```
 
-`mise.toml` declares the application and shell config links. `install.sh` applies
-them through mise, then links the proxy helper and SSH LaunchAgent. mise reports
+`mise.toml` declares the application and shell config links and the macOS
+preferences. `install.sh` applies both through mise, then links the proxy helper
+and SSH LaunchAgent. mise reports
 conflicting config targets without overwriting them; resolve those conflicts
 before rerunning. For the two remaining links, the installer replaces symlinks
 but skips existing regular files and directories.
 Vim and Neovim share `vim/rc`; FZF's binary comes from Homebrew and its Vim
-integration from vim-plug. Oh My Zsh is optional. `setup_mac.sh` separately applies
-the Dock and input preferences.
+integration from vim-plug. Oh My Zsh is optional.
 
 ## Shell environment
 

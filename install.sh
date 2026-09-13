@@ -8,7 +8,7 @@ mise_cmd=$(command -v mise || true)
 if [ -z "$mise_cmd" ]; then
     mise_cmd="$HOME/.local/bin/mise"
 fi
-"$mise_cmd" -C "$dotfiles_dir" bootstrap dotfiles apply
+"$mise_cmd" -C "$dotfiles_dir" bootstrap --only dotfiles,defaults
 
 # Symlink src -> dst, replacing an existing symlink but never clobbering
 # anything real. Re-running is safe.

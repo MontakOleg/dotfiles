@@ -12,3 +12,30 @@
 "~/Library/Application Support/lazygit/config.yml" = { source = "lazygit/config.yml", mode = "symlink" }
 "~/.config/ripgreprc" = { source = "ripgreprc", mode = "symlink" }
 "~/.gitconfig" = { source = ".gitconfig", mode = "symlink" }
+
+[bootstrap.macos.dock]
+orientation = "left"
+autohide = true
+show_recents = false
+
+[bootstrap.macos.trackpad]
+tap_to_click = true
+
+# Pressing the Fn/globe key alone does nothing
+# (System Settings > Keyboard > "Press globe key to").
+[bootstrap.macos.defaults."com.apple.HIToolbox"]
+AppleFnUsageType = 0
+
+# Hot corners: corner 1 = no action, modifier 0 = no modifier key.
+[bootstrap.macos.defaults."com.apple.dock"]
+wvous-tl-corner = 1
+wvous-tr-corner = 1
+wvous-bl-corner = 1
+wvous-br-corner = 1
+wvous-tl-modifier = 0
+wvous-tr-modifier = 0
+wvous-bl-modifier = 0
+wvous-br-modifier = 0
+
+[bootstrap.hooks]
+post-defaults = "killall Dock || true"

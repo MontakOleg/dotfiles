@@ -12,6 +12,7 @@
 "~/Library/Application Support/lazygit/config.yml" = { source = "lazygit/config.yml", mode = "symlink" }
 "~/.config/ripgreprc" = { source = "ripgreprc", mode = "symlink" }
 "~/.gitconfig" = { source = ".gitconfig", mode = "symlink" }
+"~/.local/bin/mitm_start.sh" = { source = "bin/mitm_start.sh", mode = "symlink" }
 
 [bootstrap.macos.dock]
 orientation = "left"
@@ -37,5 +38,18 @@ wvous-tr-modifier = 0
 wvous-bl-modifier = 0
 wvous-br-modifier = 0
 
+# Loads the SSH keys stored in the keychain into ssh-agent at login.
+[bootstrap.macos.launchd.agents.ssh-add-keychain]
+program = "/usr/bin/ssh-add"
+args = ["--apple-load-keychain"]
+environment = { APPLE_SSH_ADD_BEHAVIOR = "macos" }
+run_at_load = true
+stdout_path = "/dev/null"
+stderr_path = "/dev/null"
+
 [bootstrap.hooks]
 post-defaults = "killall Dock || true"
+
+# Runs at the end of `mise bootstrap`; vim-plug only installs missing plugins.
+[tasks.bootstrap]
+run = "nvim --headless +PlugInstall +qa"

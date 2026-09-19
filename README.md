@@ -34,7 +34,7 @@ integration from vim-plug. Oh My Zsh is optional.
 ## Proxy helper
 
 `mitm_start.sh` runs mitmproxy (`--web` selects mitmweb) for the Wi-Fi service.
-Install mitmproxy separately before using it. The helper restores previously
+The helper restores previously
 configured HTTP/HTTPS endpoints and their enabled state on exit, including
 SIGINT and SIGTERM. Previously unconfigured proxies are disabled on exit.
 Authenticated proxies are left untouched because their passwords cannot be read

@@ -1,0 +1,21 @@
+[tools]
+swiftlint = "latest"
+xcbeautify = "latest"
+swiftformat = "latest"
+python = "latest"
+node = "latest"
+"aqua:tomnomnom/gron" = "latest"
+"github:nalgeon/howto" = "latest"
+act = "latest"
+usage = "3.1.0"
+aws = { version = "2.36.4", symlink_bins = "true" }
+uv = "latest" # used by semgrep
+semgrep = "latest"
+"aqua:auth0/auth0-cli" = "latest"
+terraform = "1.14.9"
+helm = "4.1.4"
+fnox = "latest"
+gcloud = "558.0.0"
+
+[settings]
+experimental = true

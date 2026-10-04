@@ -35,6 +35,8 @@ end
 if command -q mise
     if status is-interactive
         mise activate fish | source
+        # fnox is a mise tool, so it is on PATH only after mise activation.
+        command -q fnox; and fnox activate fish | source
     else
         mise activate fish --shims | source
     end

@@ -5,7 +5,6 @@ swiftformat = "latest"
 python = "latest"
 node = "latest"
 "aqua:tomnomnom/gron" = "latest"
-"github:nalgeon/howto" = "latest"
 act = "latest"
 usage = "3.1.0"
 aws = { version = "2.36.4", symlink_bins = "true" }
@@ -19,3 +18,5 @@ gcloud = "558.0.0"
 
 [settings]
 experimental = true
+# gh keeps its token in the keyring, so github.gh_cli_tokens can't see it.
+github.credential_command = "gh auth token"

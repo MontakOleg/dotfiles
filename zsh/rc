@@ -35,4 +35,6 @@ fi
 
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
+  # fnox is a mise tool, so it is on PATH only after mise activation.
+  command -v fnox >/dev/null 2>&1 && eval "$(fnox activate zsh)"
 fi

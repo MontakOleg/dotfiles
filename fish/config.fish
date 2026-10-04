@@ -27,6 +27,8 @@ set -gx EDITOR nvim
 if status is-interactive
     abbr --add emc emacsclient -n
     abbr --add noquar /usr/bin/xattr -r -d com.apple.quarantine
+    # Project secrets are env = "exec" in fnox.local.toml: load them per command.
+    abbr --add fe fnox exec --
 
     # C-x C-e to edit current command (Fish also provides Alt-E and Alt-V).
     bind \cx\ce edit_command_buffer
@@ -35,8 +37,6 @@ end
 if command -q mise
     if status is-interactive
         mise activate fish | source
-        # fnox is a mise tool, so it is on PATH only after mise activation.
-        command -q fnox; and fnox activate fish | source
     else
         mise activate fish --shims | source
     end

@@ -1,0 +1,24 @@
+**/.claude/settings.local.json
+
+# Local config that may hold secrets. Patterns only affect untracked files;
+# use `git add -f` for a repo that commits one of these on purpose.
+
+# mise local config (names from mise's src/config/mod.rs)
+mise.local.toml
+.mise.local.toml
+mise.*.local.toml
+.mise.*.local.toml
+.rtx.local.toml
+**/mise/config*.local.toml
+**/.mise/config*.local.toml
+mise.local.lock
+
+# fnox local overrides
+fnox.local.toml
+.fnox.local.toml
+**/.config/fnox.local.toml
+
+# dotenv
+.env
+.env.local
+.env.*.local

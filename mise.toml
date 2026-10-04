@@ -12,6 +12,7 @@
 "~/Library/Application Support/lazygit/config.yml" = { source = "lazygit/config.yml", mode = "symlink" }
 "~/.config/ripgreprc" = { source = "ripgreprc", mode = "symlink" }
 "~/.gitconfig" = { source = ".gitconfig", mode = "symlink" }
+"~/.config/git/ignore" = { source = "git/ignore", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "mise/global.toml", mode = "symlink" }
 "~/.local/bin/mitm_start.sh" = { source = "bin/mitm_start.sh", mode = "symlink" }
 

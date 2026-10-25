@@ -1,7 +1,7 @@
 [tools]
-swiftlint = "latest"
-xcbeautify = "latest"
-swiftformat = "latest"
+"aqua:realm/SwiftLint" = "latest"
+"aqua:cpisciotta/xcbeautify" = "latest"
+"github:nicklockwood/SwiftFormat" = "latest"
 python = "latest"
 node = "latest"
 "aqua:tomnomnom/gron" = "latest"
